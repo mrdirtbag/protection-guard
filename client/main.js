@@ -87,6 +87,9 @@ Accounts.ui.config({
 
       var dest = $(e.target).data('pos');
       var value = $(e.target).val();
+      if ($(e.target).attr('type') == 'checkbox') {
+        value = $(e.target).attr('checked');
+      }
       console.log(dest);
       console.log(value);
       console.log(e);
