@@ -19,14 +19,21 @@ if (Meteor.isClient) {
   });
 
   Template.hello.events({
-    'click .tab a': function(e) {
+    'click .tabs a': function(e) {
       // update the page an step after the user manually clicks on a tab
-      var hash = e.toElement.hash;
-      Session.set('page', 1);
-      Session.set('step', parseInt(hash[hash.length - 1]));
+      if (e.toElement) {
+        var hash = e.toElement.hash;
+        Session.set('page', 1);
+        Session.set('step', parseInt(hash[hash.length - 1]));
+      }
     },
     'click #hasOtherNames': function () {
       Session.set('hasOtherNames', !Session.get('hasOtherNames')); //toggle
+    },
+    'click #step1p1': function () {
+      var order = Session.get('ProtectionOrder');
+      Session.set('ProtectionOrder', order);
+      console.log('clicked');
     },
     'click .next': function () {
       // go to next page
