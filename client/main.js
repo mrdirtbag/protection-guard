@@ -42,6 +42,18 @@ Accounts.ui.config({
   Session.setDefault('counter', 0);
 
   Template.request_form.events({
+    'change input': function(e) {
+      var id = Session.get('doc')._id;
+
+      var dest = $(e.target).data('pos');
+      var value = $(e.target).val();
+      console.log(dest);
+      console.log(value);
+      console.log(e);
+      var change = {};
+      change[dest] = value;
+      ProtectionOrderRequests.update(id, {$set: change} );
+    },
     'click .tabs a': function(e) {
       // update the page an step after the user manually clicks on a tab
       if (e.toElement) {

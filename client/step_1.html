@@ -3,13 +3,13 @@
 		{{#with session 'doc'}}
 		{{#if isPage 1}}
 			<div class="input-field col s4">
-				<input placeholder="First Name" id="first_name" type="text" value="{{petitioner.firstName}}">
+				<input placeholder="First Name" data-pos="petitioner.firstName" id="first_name" type="text" value="{{petitioner.firstName}}">
 			</div>
 			<div class="input-field col s4">
-				<input placeholder="Middle Name" id="middle_name" type="text" value="{{petitioner.middleName}}">
+				<input placeholder="Middle Name" data-pos="petitioner.middleName"  id="middle_name" type="text" value="{{petitioner.middleName}}">
 			</div>
 			<div class="input-field col s4">
-				<input placeholder="Last Name" id="last_name" type="text" value="{{petitioner.lastName}}">
+				<input placeholder="Last Name" data-pos="petitioner.lastName"  id="last_name" type="text" value="{{petitioner.lastName}}">
 			</div>
 			<a id="step1p1" class="step1p1 waves-effect waves-light btn next">Next</a>
 		{{/if}}
