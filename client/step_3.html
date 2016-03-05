@@ -43,8 +43,11 @@
 	{{/if}}
 	{{#if isPage 2}}
 		<h5>List children:</h5>
-		<div id="selections">
-			<div class="s12">
+		<div id="selections" class="col s12">
+			<div class="input-field col s6">
+				<input placeholder="Child's Initials" id="childInitials" type="text">
+			</div>
+			<div class="input-field col s6">
 				<input placeholder="mm/dd/yyyy"  type="date" class="datepicker" data-pos="petitioner.dateOfBirth" value="{{petitioner.dateOfBirth}}">
 			</div>
 		</div>
