@@ -1,14 +1,15 @@
 <template name="step_1">
 	<div id="step1" class="col s12">
+		{{#with session 'doc'}}
 		{{#if isPage 1}}
 			<div class="input-field col s4">
-				<input placeholder="First Name" id="first_name" type="text">
+				<input placeholder="First Name" id="first_name" type="text" value="{{petitioner.firstName}}">
 			</div>
 			<div class="input-field col s4">
-				<input placeholder="Middle Name" id="middle_name" type="text">
+				<input placeholder="Middle Name" id="middle_name" type="text" value="{{petitioner.middleName}}">
 			</div>
 			<div class="input-field col s4">
-				<input placeholder="Last Name" id="last_name" type="text">
+				<input placeholder="Last Name" id="last_name" type="text" value="{{petitioner.lastName}}">
 			</div>
 			<a id="step1p1" class="step1p1 waves-effect waves-light btn next">Next</a>
 		{{/if}}
@@ -27,6 +28,8 @@
 			</div>
 			<a class="waves-effect waves-light btn next">Next</a>
 		{{/if}}
+		{{/with}}
+		{{> page_count}}
 	</div>
 
 </template>

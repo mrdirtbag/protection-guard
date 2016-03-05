@@ -46,6 +46,7 @@ Accounts.ui.config({
         var hash = e.toElement.hash;
         Session.set('page', 1);
         Session.set('step', parseInt(hash[hash.length - 1]));
+        Session.set('pageCount', pagesPerStep[Session.get('step')]);
       }
     },
     'click #hasOtherNames': function () {
@@ -59,9 +60,10 @@ Accounts.ui.config({
     'click .next': function () {
       // go to next page
       Session.set('page', Session.get('page') + 1);
-      if (Session.get('page') > pagesPerStep[Session.get('step')]) {
+      if (Session.get('page') > Session.get('pageCount')) {
         Session.set('page', 1);
         Session.set('step', Session.get('step') + 1);
+        Session.set('pageCount', pagesPerStep[Session.get('step')]);
         $('ul.tabs').tabs('select_tab', 'step' + Session.get('step'));
         console.log('advancing to next step');
       }
@@ -72,6 +74,7 @@ Accounts.ui.config({
     Session.set('hasOtherNames', false)
     Session.set('step', 1);
     Session.set('page', 1);
+    Session.set('pageCount', pagesPerStep[Session.get('step')]);
     $(document).ready(function(){
       $('ul.tabs').tabs({ fx: { direction: 'left' } });
     });
@@ -84,3 +87,4 @@ Accounts.ui.config({
   Template.registerHelper('session', function (name) {
       return Session.get(name);
   });
+
