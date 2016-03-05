@@ -17,6 +17,8 @@ Router.route('/', function () {
 	if(!doc) {
 		console.log("nodoc");
 		doc = example
+		ProtectionOrderRequests.insert(doc);
+		doc = ProtectionOrderRequests.findOne({});
 	} 
 	Session.set("doc", doc);
 
