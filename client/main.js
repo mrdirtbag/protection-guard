@@ -9,24 +9,29 @@ Router.configure({
 // specify the top level route, the page users see when they arrive at the site
 Router.route('/', function () {
   this.render("navbar", {to:"header"});
-  if(Meteor.user()) {
-	this.render("request_form", {to:"main"});
+	this.render("landing", {to:"main"});
 
-	var doc = ProtectionOrderRequests.findOne({});
-
-	if(!doc) {
-		console.log("nodoc");
-		doc = example
-		ProtectionOrderRequests.insert(doc);
-		doc = ProtectionOrderRequests.findOne({});
-	} 
-	Session.set("doc", doc);
-
-  } else {
-  	this.render("please_login", {to:"main"});
-  }
 });
 
+Router.route('/begin', function () {
+  this.render("navbar", {to:"header"});
+  if(Meteor.user()) {
+  this.render("request_form", {to:"main"});
+
+  var doc = ProtectionOrderRequests.findOne({});
+
+  if(!doc) {
+    console.log("nodoc");
+    doc = example
+    ProtectionOrderRequests.insert(doc);
+    doc = ProtectionOrderRequests.findOne({});
+  } 
+  Session.set("doc", doc);
+
+  } else {
+    this.render("please_login", {to:"main"});
+  }
+});
 //////////////////
 // accounts config
 /////////

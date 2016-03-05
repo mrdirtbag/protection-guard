@@ -32,7 +32,7 @@
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-		    	<li><a href="/list">List</a></li>
+		    	<li><a href="/begin">List</a></li>
 		    </ul>
 	        <div class="nav navbar-nav navbar-right">
 		    	{{> loginButtons align="right"}}
@@ -40,6 +40,15 @@
 		</div>
 	</nav>
 </template>
+
+<template name="landing">
+	<div class="center">
+	<h1><a href="/begin">Begin the healing now.</a></h1>
+	<a href="/begin"><img src="hand.jpg"/></a>
+	<a href="/begin"><img src="images.jpeg"/></a>
+	</div>
+</template>
+
 
 <template name="please_login">
 	<h3>Please login to start or continue a request process.</h3>
