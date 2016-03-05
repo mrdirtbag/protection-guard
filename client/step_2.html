@@ -1,6 +1,7 @@
 <template name="step_2">
 	<div id="step2" class="col s12">
 		{{#if isPage 1}}
+			<h3>Who do you want protection from?</h3>
 			<div class="input-field col s4">
 				<input placeholder="First Name" id="first_name" type="text">
 			</div>
@@ -12,14 +13,16 @@
 			</div>
 			<p>
 		      <input type="checkbox" class="filled-in" id="hasOtherNames" />
-		      <label for="hasOtherNames">Has other names</label>
+		      <label for="hasOtherNames">Also has other names</label>
 		    </p>
 		    {{#if session 'hasOtherNames'}}
 		    	<input placeholder="Other Names" id="otherNames" type="text">
 		    {{/if}}
-		    {{> control}}
 		{{/if}}
 		{{#if isPage 2}}
+			<h3>Where do they live?</h3>
+			<input type="checkbox" class="filled-in" id="abuserSameAddress" />
+			<label for="abuserSameAddress">Same address as me</label>
 			<input placeholder="Street" id="first_name" type="text">
 			<div class="row">
 				<div class="input-field col s4">
@@ -32,8 +35,25 @@
 					<input placeholder="Zip" id="first_name" type="number">
 				</div>
 			</div>
-			{{> control}}
 		{{/if}}
+		{{#if isPage 3}}
+			<h3>What do they look like?</h3>
+			<div class="input-field col s4">
+				<select>
+			      <option value="" disabled selected>Gender</option>
+			      <option value="1">Male</option>
+			      <option value="2">Female</option>
+			    </select>
+			    <script>$('select').material_select();</script>
+			</div>
+			<div class="input-field col s4">
+				<input placeholder="State" id="first_name" type="text">
+			</div>
+			<div class="input-field col s4">
+				<input placeholder="Zip" id="first_name" type="number">
+			</div>
+		{{/if}}
+		{{> control}}
 		{{> page_count}}
 	</div>
 </template>

@@ -38,6 +38,46 @@ Accounts.ui.config({
 // Helper
 //////////////////
 
+  function nextPage() {
+      Session.set('page', Session.get('page') + 1);
+      if (Session.get('page') > Session.get('pageCount')) {
+        Session.set('page', 1);
+        Session.set('step', Session.get('step') + 1);
+        Session.set('pageCount', pagesPerStep[Session.get('step')]);
+        $('ul.tabs').tabs('select_tab', 'step' + Session.get('step'));
+        console.log('advancing to next step');
+      }
+
+      if (skipThisPage()) {
+        nextPage();
+      }
+  }
+
+  function previousPage() {
+      Session.set('page', Session.get('page') - 1);
+      if (Session.get('page') == 0) {
+        Session.set('step', Session.get('step') - 1);
+        Session.set('pageCount', pagesPerStep[Session.get('step')]);
+        Session.set('page', Session.get('pageCount'));
+        $('ul.tabs').tabs('select_tab', 'step' + Session.get('step'));
+        console.log('backing up');
+      }
+
+      if (skipThisPage()) {
+        previousPage();
+      }
+  }
+
+  function skipThisPage() {
+    var doc = Session.get('doc');
+    var step = Session.get('step');
+    var page = Session.get('page');
+    if (!Session.get('children') && step == 3 && page == 2)
+      return true;
+
+    return false;
+  }
+
   // counter starts at 0
   Session.setDefault('counter', 0);
 
@@ -70,26 +110,10 @@ Accounts.ui.config({
       Session.set('children', !Session.get('children')); //toggle
     },
     'click .next': function () {
-      // go to next page
-      Session.set('page', Session.get('page') + 1);
-      if (Session.get('page') > Session.get('pageCount')) {
-        Session.set('page', 1);
-        Session.set('step', Session.get('step') + 1);
-        Session.set('pageCount', pagesPerStep[Session.get('step')]);
-        $('ul.tabs').tabs('select_tab', 'step' + Session.get('step'));
-        console.log('advancing to next step');
-      }
+      nextPage();
     },
     'click .back': function () {
-      // go to next page
-      Session.set('page', Session.get('page') - 1);
-      if (Session.get('page') == 0) {
-        Session.set('step', Session.get('step') - 1);
-        Session.set('pageCount', pagesPerStep[Session.get('step')]);
-        Session.set('page', Session.get('pageCount'));
-        $('ul.tabs').tabs('select_tab', 'step' + Session.get('step'));
-        console.log('backing up');
-      }
+      previousPage();
     }
   });
 
@@ -102,6 +126,13 @@ Accounts.ui.config({
     Session.set('pageCount', pagesPerStep[Session.get('step')]);
     $(document).ready(function(){
       $('ul.tabs').tabs({ fx: { direction: 'left' } });
+    });
+  };
+
+  Template.step_2.rendered = function() {
+    $(document).ready(function(){
+      console.log('123aa');
+      $('select').material_select();
     });
   };
 
