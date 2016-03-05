@@ -1,7 +1,118 @@
 <template name="step_4">
 	<div id="step4" class="col s12">
-		Test 4
-		<a class="waves-effect waves-light btn next">Next</a>
-		{{> page_count}}
-	</div>
+		{{#with session 'doc'}}
+		{{#if isPage 1}}
+		<h3>Next, we need details about the most recent abuse:</h3>
+		<div class="row">
+			<div class="input-field col s4">
+				<input placeholder="Date of event" type="date" data-pos="recentAbuse.when" value="{{recentAbuse.when}}">
+			</div>
+			<div class="input-field col s12">
+				<h4>Address of incident:</h4>
+
+				<input placeholder="Street" type="text" data-pos="recentAbuse.incidentAddress.address" value="{{recentAbuse.incidentAddress.address}}">
+			</div>
+			<div class="input-field col s4">
+				<input placeholder="City" type="text" data-pos="recentAbuse.incidentAddress.city" value="{{recentAbuse.incidentAddress.city}}">
+			</div>
+			<div class="input-field col s4">
+				<input placeholder="State" type="text" data-pos="recentAbuse.incidentAddress.state" value="{{recentAbuse.incidentAddress.state}}">
+			</div>
+			<div class="input-field col s4">
+				<input placeholder="Zip" type="number" data-pos="recentAbuse.incidentAddress.zip" value="{{recentAbuse.incidentAddress.zip}}">
+			</div>
+		</div>
+		{{> control}}
+		{{/if}}
+		{{#if isPage 2}}
+		<div class="row">
+			<div class="input-field col s12">
+			    <p>
+			      <input type="checkbox" class="filled-in" data-pos="recentAbuse.recentAbuse.police.came" id="police_came" />
+			      <label for="police_came">Did the police come?</label>
+		    	</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s6">
+				<input placeholder="Department" type="text" data-pos="recentAbuse.police.department" value="{{recentAbuse.police.department}}">
+			</div>
+
+			<div class="input-field col s6">
+				<p>				
+					<input type="checkbox" class="filled-in" id="arrested" data-pos="recentAbuse.police.anyoneArrested" value="{{recentAbuse.police.anyoneArrested}}"/><label for="arrested">Anyone arrested?</label>
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s6">
+				<input placeholder="Case #" type="text" data-pos="recentAbuse.police.caseNumber" value="{{recentAbuse.police.caseNumber}}">
+			</div>
+
+			<div class="input-field col s6">
+				<p>
+					<input type="checkbox" class="filled-in" id="ticketed" data-pos="recentAbuse.police.anyoneTicketed" value="{{recentAbuse.police.anyoneTicketed}}"/><label for="ticketed">Anyone ticketed?</label>
+				</p>
+			</div>
+
+		</div>
+		{{> control}}
+
+		{{/if}}
+		{{#if isPage 3}}
+		<div class="row">
+			<h3>Please describe the recent incident.</h3>
+			<div class="input-field col s12">
+				<textarea rows="10" placeholder="Incident description" type="text" data-pos="recentAbuse.description" value="{{recentAbuse.description}}"></textarea>
+			</div>
+		</div>
+		{{> control}}
+
+		{{/if}}
+		{{#if isPage 4}}
+
+			<h3>Why specifically are you afraid?</h3>
+		<div class="row">
+			<div class="input-field col s12">
+				<textarea rows="5" placeholder="Why specifically are you afraid?" type="text" data-pos="recentAbuse.whyAfraid" value="{{recentAbuse.whyAfraid}}"></textarea>
+			</div>
+			<div class="input-field col s6">
+				<label for="weaponThreat">Did anyone threaten with a weapon?
+				<input type="checkbox" class="filled-in" data-pos="recentAbuse.weaponThreat" value="{{recentAbuse.weaponThreat}}"/></label>
+			</div>
+			<div class="input-field col s6">
+				<input placeholder="Weapon Description" type="text" data-pos="recentAbuse.weaponDescription" value="{{recentAbuse.weaponDescription}}"/>
+			</div>
+
+		</div>
+		{{> control}}
+
+		{{/if}}
+		{{#if isPage 5}}
+		<h3>Who was present at the incident?</h3>
+		<div class="row">
+			<div class="input-field col s4">
+				<input placeholder="Children present (initals only)" type="text" data-pos="recentAbuse.childrenPresent" value="{{recentAbuse.childrenPresent}}">
+			</div>
+			<div class="input-field col s4">
+				<input placeholder="Others present" type="text" data-pos="recentAbuse.othersPresent" value="{{recentAbuse.othersPresent}}">
+			</div>
+			<div class="input-field col s4">
+				<input placeholder="Anyone hurt" type="text" data-pos="recentAbuse.anyoneHurt" value="{{recentAbuse.anyoneHurt}}">
+			</div>
+		</div>
+		{{> control}}
+
+		{{/if}}
+		{{#if isPage 6}}
+		<div class="row">
+			<h3>Other facts for the court:</h3>
+			<div class="input-field col s12">
+				<textarea rows="10" placeholder="Other Facts" data-pos="recentAbuse.otherFacts" value="{{recentAbuse.otherFacts}}"></textarea>
+			</div>
+		</div>
+		{{> control}}
+		{{/if}}
+		{{/with}}
+		{{> page_count}}	</div>
 </template>
