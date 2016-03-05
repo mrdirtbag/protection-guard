@@ -1,41 +1,63 @@
 <template name="step_3">
 	<div id="step3" class="col s12">
+	{{#with session 'doc'}}
 	{{#if isPage 1}}
 		<h5 id="description">What is your relationship to the Respondent? <span id="apply">(Check all that apply)</span></h5>
 		<div id="selections">
 			<div class="col s6">
 				<p>
-			    <input type="checkbox" id="married" />
+			    <input type="checkbox" id="married" checked="{{relationship.married}}" data-pos="relationship.married" />
 			    <label for="married">Currently Married</label>
 			  </p>
 			  <p>
-			  	<input type="checkbox" id="divorced" />
+			  	<input type="checkbox" id="divorced" checked="{{relationship.formerlyMarried}}" data-pos="relationship.formerlyMarried" />
 			  	<label for="divorced">We used to be married</label>
+			  	{{#if session 'divorced'}}
+			  		<div class="input-field col s6">
+			  			<label for="dateOfDivorce">Date of Divorce: </label>
+			  		</div>
+			  		<div class="input-field col s6">
+							<input placeholder="mm/dd/yyyy" id="dateOfDivorce"  type="date" class="datepicker" data-pos="relationship.dateOfDivorce" value="{{relationship.dateOfDivorce}}">
+						</div>
+			  	{{/if}}
 			  </p>
 			  <p>
-			  	<input type="checkbox" id="liveTogether" />
+			  	<input type="checkbox" id="liveTogether" checked="{{relationship.liveTogether}}" data-pos="relationship.liveTogether" />
 			  	<label for="liveTogether">We live together as a couple</label>
 			  </p>
 			  <p>
-			  	<input type="checkbox" id="livedToegether" />
+			  	<input type="checkbox" id="livedToegether" checked="{{relationship.formerlyLivedTogether}}" data-pos="relationship.formerlyLivedTogether" />
 			  	<label for="livedToegether">We previously lived together as a couple.</label>
 			  </p>
 			  <p>
-			  	<input type="checkbox" id="roommates" />
+			  	<input type="checkbox" id="roommates" checked="{{relationship.roomates}}" data-pos="relationship.roomates" />
 			  	<label for="roommates">We live or used to live in the same home</label>
 			  </p>
 			</div>
 			<div class="col s6">
 				<p>
-					<input type="checkbox" id="relatives" />
+					<input type="checkbox" id="relatives" checked="{{relationship.relatives}}" data-pos="relationship.relatives" />
 					<label for="relatives">Relatives, in-laws, or by adoption</label>
+					{{#if session 'relatives'}}
+						<div class="input-field col s12">
+			  			<input placeholder="How Related?" id="relation" type="text" data-pos="relationship.relativeRelationship" value="{{relationship.relativeRelationship}}"/>
+			  		</div>
+					{{/if}}
 				</p>
 				<p>
-					<input type="checkbox" id="expecting" />
+					<input type="checkbox" id="expecting" checked="{{relationship.expectingChild}}" data-pos="relationship.expectingChild" />
 					<label for="expecting">We are expecting a child now.</label>
+					{{#if session 'expecting'}}
+						<div class="input-field col s6">
+			  			<label for="dateExpecting">Due Date: </label>
+			  		</div>
+			  		<div class="input-field col s6">
+							<input placeholder="mm/dd/yyyy" id="dateExpecting"  type="date" class="datepicker" data-pos="relationship.childDueDate" value="{{relationship.childDueDate}}">
+						</div>
+					{{/if}}
 				</p>
 				<p>
-					<input type="checkbox" id="children" />
+					<input type="checkbox" id="children" checked="{{relationship.hasChildren}}" data-pos="relationship.hasChildren" />
 					<label for="children">We have a child(ren)</label>
 				</p>
 			</div>
@@ -45,14 +67,21 @@
 		<h5>List children:</h5>
 		<div id="selections" class="col s12">
 			<div class="input-field col s6">
-				<input placeholder="Child's Initials" id="childInitials" type="text">
+				<input placeholder="Child's Initials" id="childInitials" type="text" data-pos="relationship.children.0.initials" value="{{relationship.children.[0].initials}}">
 			</div>
 			<div class="input-field col s6">
-				<input placeholder="mm/dd/yyyy"  type="date" class="datepicker" data-pos="petitioner.dateOfBirth" value="{{petitioner.dateOfBirth}}">
+				<input placeholder="mm/dd/yyyy"  type="date" class="datepicker" data-pos="relationship.children.0.birth" value="{{relationship.children.[0].birth}}">
+			</div>
+			<div class="input-field col s6">
+				<input placeholder="Child's Initials" id="childInitials" type="text" data-pos="relationship.children.1.initials" value="{{relationship.children.[1].initials}}">
+			</div>
+			<div class="input-field col s6">
+				<input placeholder="mm/dd/yyyy"  type="date" class="datepicker" data-pos="relationship.children.1.birth" value="{{relationship.children.[1].birth}}">
 			</div>
 		</div>
 	{{/if}}
 	{{> control}}
+	{{/with}}
 	{{> page_count}}
 	</div>
 </template>

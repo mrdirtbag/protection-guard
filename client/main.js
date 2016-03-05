@@ -87,8 +87,8 @@ Accounts.ui.config({
 
       var dest = $(e.target).data('pos');
       var value = $(e.target).val();
-      if ($(e.target).attr('type') == 'checkbox') {
-        value = $(e.target).attr('checked');
+      if ($(e.target).prop('type') == 'checkbox') {
+        value = $(e.target).prop('checked');
       }
       console.log(dest);
       console.log(value);
@@ -108,6 +108,15 @@ Accounts.ui.config({
     },
     'click #hasOtherNames': function () {
       Session.set('hasOtherNames', !Session.get('hasOtherNames')); //toggle
+    },
+    'click #divorced': function () {
+      Session.set('divorced', !Session.get('divorced')); //toggle
+    },
+    'click #relatives': function () {
+      Session.set('relatives', !Session.get('relatives')); //toggle
+    },
+    'click #expecting': function () {
+      Session.set('expecting', !Session.get('expecting')); //toggle
     },
     'click #children': function () {
       Session.set('children', !Session.get('children')); //toggle
