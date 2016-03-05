@@ -29,9 +29,16 @@ input[type='checkbox']:checked + label:before {
 }
 
 /*STEP 3 STYLES*/
+#step3 #selections {
+	display: inline-block;
+}
 #step3 #description #apply {
 	font-style: italic;
 }
-#step3 #selections {
+
+/*STEP 6 STYLES*/
+#step6 #selections {
 	display: inline-block;
+	height: 150px;
+	line-height: 125px;
 }

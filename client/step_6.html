@@ -1,7 +1,19 @@
 <template name="step_6">
 	<div id="step6" class="col s12">
-		Test 6
-		<a class="waves-effect waves-light btn next">Next</a>
+	{{#with session 'doc'}}
+		{{#if isPage 1}}
+			<h5>Are you or the Respondent on probation for Domestic Violence?</h5>
+			<div id="selections" class="col s12">
+				<div class="col s6 offset-s3">
+					<input type="checkbox" id="you" checked="{{otherCourtCases.probation.petitioner}}" data-pos="otherCourtCases.probation.petitioner" />
+					<label for="you">You</label>
+					<input type="checkbox" id="respondent" checked="{{otherCourtCases.probation.respondent}}" data-pos="otherCourtCases.probation.respondent" />
+					<label for="respondent">Respondent</label>
+				</div>
+			</div>
+		{{/if}}
+	{{/with}}
+		{{> control}}
 		{{> page_count}}
 	</div>	
 </template>
