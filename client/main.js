@@ -75,6 +75,9 @@ Accounts.ui.config({
     if (!Session.get('children') && step == 3 && page == 2)
       return true;
 
+    if (!Session.get('another_incident') && step == 5 && page > 1)
+      return true;
+
     return false;
   }
 
@@ -135,6 +138,9 @@ Accounts.ui.config({
     },
     'click #police_came': function () {
       Session.set('police_came', !Session.get('police_came')); //toggle
+    },
+    'click #another_incident': function () {
+      Session.set('another_incident', !Session.get('another_incident')); //toggle
     },
     'click #abuserSameAddress': function () {
       Session.set('abuserSameAddress', !Session.get('abuserSameAddress')); //toggle
