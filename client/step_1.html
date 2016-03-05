@@ -2,6 +2,7 @@
 	<div id="step1" class="col s12">
 		{{#with session 'doc'}}
 		{{#if isPage 1}}
+			<h3>To start off, we just need some basic information about you.</h3>
 			<div class="input-field col s4">
 				<input placeholder="First Name" data-pos="petitioner.firstName" id="first_name" type="text" value="{{petitioner.firstName}}">
 			</div>
@@ -11,22 +12,33 @@
 			<div class="input-field col s4">
 				<input placeholder="Last Name" data-pos="petitioner.lastName"  id="last_name" type="text" value="{{petitioner.lastName}}">
 			</div>
-			<a id="step1p1" class="step1p1 waves-effect waves-light btn next">Next</a>
+			{{> control}}
 		{{/if}}
 		{{#if isPage 2}}
-			<input placeholder="Street" id="first_name" type="text">
+			<h3>Where do you live?</h3>
+			<input placeholder="Street" type="text" data-pos="petitioner.homeAddress.address" value="{{petitioner.homeAddress.address}}">
 			<div class="row">
 				<div class="input-field col s4">
-					<input placeholder="City" id="first_name" type="text">
+					<input placeholder="City" type="text" data-pos="petitioner.homeAddress.city" value="{{petitioner.homeAddress.city}}">
 				</div>
 				<div class="input-field col s4">
-					<input placeholder="State" id="first_name" type="text">
+					<input placeholder="State" type="text" data-pos="petitioner.homeAddress.state" value="{{petitioner.homeAddress.state}}">
 				</div>
 				<div class="input-field col s4">
-					<input placeholder="Zip" id="first_name" type="number">
+					<input placeholder="Zip" tabindex="" ype="number" data-pos="petitioner.homeAddress.zip" value="{{petitioner.homeAddress.zip}}">
 				</div>
 			</div>
-			<a class="waves-effect waves-light btn next">Next</a>
+			{{> control}}
+		{{/if}}
+		{{#if isPage 3}}
+			<h3>What's your phone number?</h3>
+			<input placeholder=""  type="text" data-pos="petitioner.phone" value="{{petitioner.phone}}">
+			{{> control}}
+		{{/if}}
+		{{#if isPage 4}}
+			<h3>When were you born?</h3>
+			<input placeholder="mm/dd/yyyy"  type="date" class="datepicker" data-pos="petitioner.dateOfBirth" value="{{petitioner.dateOfBirth}}">
+			{{> control}}
 		{{/if}}
 		{{/with}}
 		{{> page_count}}

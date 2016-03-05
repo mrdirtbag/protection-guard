@@ -17,7 +17,7 @@
 		    {{#if session 'hasOtherNames'}}
 		    	<input placeholder="Other Names" id="otherNames" type="text">
 		    {{/if}}
-			<a class="waves-effect waves-light btn next">Next</a>
+		    {{> control}}
 		{{/if}}
 		{{#if isPage 2}}
 			<input placeholder="Street" id="first_name" type="text">
@@ -32,7 +32,7 @@
 					<input placeholder="Zip" id="first_name" type="number">
 				</div>
 			</div>
-			<a class="waves-effect waves-light btn next">Next</a>
+			{{> control}}
 		{{/if}}
 		{{> page_count}}
 	</div>
