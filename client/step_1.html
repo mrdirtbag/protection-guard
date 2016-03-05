@@ -40,6 +40,22 @@
 			<input placeholder="mm/dd/yyyy"  type="date" class="datepicker" data-pos="petitioner.dateOfBirth" value="{{petitioner.dateOfBirth}}">
 			{{> control}}
 		{{/if}}
+		{{#if isPage 5}}
+			<h3>Do you have an attorney? (optional)</h3>
+			<div class="row">
+
+				<input type="checkbox" id="hasAttorney" checked="{{session 'hasAttorney'}}" />
+				<label for="hasAttorney">Yes</label>
+				
+			</div>
+			<div class="input-field col s4">
+				<input placeholder="Name" data-pos="petitioner.attorney.name" id="attorneyName" type="text" value="{{petitioner.attorney.name}}">
+			</div>
+			<div class="input-field col s4">
+				<input placeholder="Phone" data-pos="petitioner.attorney.phone"  id="attorneyPhone" type="text" value="{{petitioner.attorney.phone}}">
+			</div>
+			{{> control}}
+		{{/if}}
 		{{/with}}
 		{{> page_count}}
 	</div>

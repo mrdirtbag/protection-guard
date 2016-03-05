@@ -133,6 +133,9 @@ Accounts.ui.config({
     'click #children': function () {
       Session.set('children', !Session.get('children')); //toggle
     },
+    'click #police_came': function () {
+      Session.set('police_came', !Session.get('police_came')); //toggle
+    },
     'click #abuserSameAddress': function () {
       Session.set('abuserSameAddress', !Session.get('abuserSameAddress')); //toggle
       var doc = Session.get('doc');
@@ -150,6 +153,7 @@ Accounts.ui.config({
     var doc = Session.get("doc");
     Session.set('hasOtherNames', false);
     Session.set('children', doc.relationship.children.length > 0);
+    Session.set('police_came', doc.recentAbuse.police.came);
     Session.set('step', 1);
     Session.set('page', 1);
     Session.set('pageCount', pagesPerStep[Session.get('step')]);
