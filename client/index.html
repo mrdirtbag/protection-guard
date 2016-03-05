@@ -1,9 +1,11 @@
 <head>
   <title>ProtectionOrder.Tech</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
+
 </body>
 
 <!-- this is the main template used by iron:router to build the page -->
@@ -40,5 +42,92 @@
 </template>
 
 <template name="hello">
-	<h1>Hello</h1>
+	<div class="row">
+		<div class="col s12">
+			<ul class="tabs">
+				<li class="tab col s3"><a href="#step1">You</a></li>
+				<li class="tab col s3"><a href="#step2">Respondent</a></li>
+				<li class="tab col s3"><a href="#step3">Relationship</a></li>
+				<li class="tab col s3"><a href="#step4">Recent Abuse</a></li>
+				<li class="tab col s3"><a href="#step5">Past Abuse</a></li>
+				<li class="tab col s3"><a href="#step5">Court Cases</a></li>
+				<li class="tab col s3"><a href="#step5">Requests</a></li>
+			</ul>
+		</div>
+
+		<div id="step1" class="col s12">
+			{{#if isPage 1}}
+				<div class="input-field col s4">
+					<input placeholder="First Name" id="first_name" type="text">
+				</div>
+				<div class="input-field col s4">
+					<input placeholder="Middle Name" id="middle_name" type="text">
+				</div>
+				<div class="input-field col s4">
+					<input placeholder="Last Name" id="last_name" type="text">
+				</div>
+				<a class="waves-effect waves-light btn next">Next</a>
+			{{/if}}
+			{{#if isPage 2}}
+				<input placeholder="Street" id="first_name" type="text">
+				<div class="row">
+					<div class="input-field col s4">
+						<input placeholder="City" id="first_name" type="text">
+					</div>
+					<div class="input-field col s4">
+						<input placeholder="State" id="first_name" type="text">
+					</div>
+					<div class="input-field col s4">
+						<input placeholder="Zip" id="first_name" type="number">
+					</div>
+				</div>
+				<a class="waves-effect waves-light btn next">Next</a>
+			{{/if}}
+		</div>
+
+		<div id="step2" class="col s12">
+			{{#if isPage 1}}
+				<div class="input-field col s4">
+					<input placeholder="First Name" id="first_name" type="text">
+				</div>
+				<div class="input-field col s4">
+					<input placeholder="Middle Name" id="middle_name" type="text">
+				</div>
+				<div class="input-field col s4">
+					<input placeholder="Last Name" id="last_name" type="text">
+				</div>
+				<p>
+			      <input type="checkbox" class="filled-in" id="hasOtherNames" />
+			      <label for="hasOtherNames">Has other names</label>
+			    </p>
+			    {{#if session 'hasOtherNames'}}
+			    	<input placeholder="Other Names" id="otherNames" type="text">
+			    {{/if}}
+				<a class="waves-effect waves-light btn next">Next</a>
+			{{/if}}
+			{{#if isPage 2}}
+				<input placeholder="Street" id="first_name" type="text">
+				<div class="row">
+					<div class="input-field col s4">
+						<input placeholder="City" id="first_name" type="text">
+					</div>
+					<div class="input-field col s4">
+						<input placeholder="State" id="first_name" type="text">
+					</div>
+					<div class="input-field col s4">
+						<input placeholder="Zip" id="first_name" type="number">
+					</div>
+				</div>
+				<a class="waves-effect waves-light btn next">Next</a>
+			{{/if}}
+		</div>
+
+		<div id="step3" class="col s12">
+			aoeuaoeu      aoeuaoe uaoeu      aoeu
+		</div>
+
+		<div id="step4" class="col s12">
+			Test 4
+		</div>
+	</div>
 </template>
