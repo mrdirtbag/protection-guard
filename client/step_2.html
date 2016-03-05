@@ -13,7 +13,7 @@
 				<input placeholder="Last Name" id="last_name" type="text" data-pos="respondent.lastName" value="{{respondent.lastName}}">
 			</div>
 			<p>
-		      <input type="checkbox" class="filled-in" id="hasOtherNames" data-pos="respondent.otherNames" value="{{respondent.otherNames}}" />
+		      <input type="checkbox" id="hasOtherNames" data-pos="respondent.otherNames" value="{{respondent.otherNames}}" />
 		      <label for="hasOtherNames">Also has other names</label>
 		    </p>
 		    {{#if session 'hasOtherNames'}}
@@ -22,7 +22,7 @@
 		{{/if}}
 		{{#if isPage 2}}
 			<h3>Where do they live?</h3>
-			<input type="checkbox" class="filled-in" id="abuserSameAddress" checked="{{session 'abuserSameAddress'}}" />
+			<input type="checkbox" id="abuserSameAddress" checked="{{session 'abuserSameAddress'}}" />
 			<label for="abuserSameAddress">Same address as me</label>
 			{{#unless session 'abuserSameAddress'}}
 			<input placeholder="Street" type="text" data-pos="respondent.homeAddress.address" value="{{respondent.homeAddress.address}}">
