@@ -1,18 +1,19 @@
 <template name="step_2">
 	<div id="step2" class="col s12">
+		{{#with session 'doc'}}
 		{{#if isPage 1}}
 			<h3>Who do you want protection from?</h3>
 			<div class="input-field col s4">
-				<input placeholder="First Name" id="first_name" type="text">
+				<input placeholder="First Name" type="text" data-pos="respondent.firstName" value="{{respondent.firstName}}">
 			</div>
 			<div class="input-field col s4">
-				<input placeholder="Middle Name" id="middle_name" type="text">
+				<input placeholder="Middle Name" id="middle_name" type="text" data-pos="respondent.middleName" value="{{respondent.middleName}}">
 			</div>
 			<div class="input-field col s4">
-				<input placeholder="Last Name" id="last_name" type="text">
+				<input placeholder="Last Name" id="last_name" type="text" data-pos="respondent.lastName" value="{{respondent.lastName}}">
 			</div>
 			<p>
-		      <input type="checkbox" class="filled-in" id="hasOtherNames" />
+		      <input type="checkbox" class="filled-in" id="hasOtherNames" data-pos="respondent.otherNames" value="{{respondent.otherNames}}" />
 		      <label for="hasOtherNames">Also has other names</label>
 		    </p>
 		    {{#if session 'hasOtherNames'}}
@@ -21,38 +22,69 @@
 		{{/if}}
 		{{#if isPage 2}}
 			<h3>Where do they live?</h3>
-			<input type="checkbox" class="filled-in" id="abuserSameAddress" />
+			<input type="checkbox" class="filled-in" id="abuserSameAddress" checked="{{session 'abuserSameAddress'}}" />
 			<label for="abuserSameAddress">Same address as me</label>
-			<input placeholder="Street" id="first_name" type="text">
+			{{#unless session 'abuserSameAddress'}}
+			<input placeholder="Street" type="text" data-pos="respondent.homeAddress.address" value="{{respondent.homeAddress.address}}">
 			<div class="row">
 				<div class="input-field col s4">
-					<input placeholder="City" id="first_name" type="text">
+					<input placeholder="City" type="text" data-pos="respondent.homeAddress.city" value="{{respondent.homeAddress.city}}">
 				</div>
 				<div class="input-field col s4">
-					<input placeholder="State" id="first_name" type="text">
+					<input placeholder="State" type="text" data-pos="respondent.homeAddress.state" value="{{respondent.homeAddress.state}}">
 				</div>
 				<div class="input-field col s4">
-					<input placeholder="Zip" id="first_name" type="number">
+					<input placeholder="Zip" type="number" data-pos="respondent.homeAddress.zip" value="{{respondent.homeAddress.zip}}">
 				</div>
 			</div>
+			{{/unless}}
 		{{/if}}
 		{{#if isPage 3}}
 			<h3>What do they look like?</h3>
-			<div class="input-field col s4">
-				<select>
-			      <option value="" disabled selected>Gender</option>
-			      <option value="1">Male</option>
-			      <option value="2">Female</option>
-			    </select>
-			    <script>$('select').material_select();</script>
+			<div class="row">
+				<div class="input-field col s4">
+					<select data-pos="respondent.description.sex" value="{{respondent.description.sex}}" >
+				      <option value="" disabled selected="{{selectGender ''}}">Gender</option>
+				      <option value="male" selected="{{selectGender 'male'}}">Male</option>
+				      <option value="female" selected="{{selectGender 'female'}}">Female</option>
+				    </select>
+				    <script>$('select').material_select(); /*$('select').val('{{respondent.description.sex}}');*/</script>
+				</div>
+				<div class="input-field col s4">
+					<input placeholder="Race" type="text" data-pos="respondent.description.race" value="{{respondent.description.race}}">
+				</div>
+				<div class="input-field col s4">
+					<input placeholder="Height" type="text" data-pos="respondent.description.height" value="{{respondent.description.height}}">
+				</div>
 			</div>
-			<div class="input-field col s4">
-				<input placeholder="State" id="first_name" type="text">
-			</div>
-			<div class="input-field col s4">
-				<input placeholder="Zip" id="first_name" type="number">
+
+			<div class="row">
+				<div class="input-field col s4">
+					<input placeholder="Weight" type="text" data-pos="respondent.description.weight" value="{{respondent.description.weight}}">
+				</div>
+				<div class="input-field col s4">
+					<input placeholder="Hair Color" type="text" data-pos="respondent.description.hair" value="{{respondent.description.hair}}">
+				</div>
 			</div>
 		{{/if}}
+		{{#if isPage 4}}
+			<h3>We need to know more about them.</h3>
+			<div class="row">
+				<label for="dob">Date of Birth</label>
+				<input placeholder="mm/dd/yyyy" id="dob" type="date" class="datepicker" data-pos="respondent.description.dateOfBirth" value="{{respondent.description.dateOfBirth}}">
+				
+				<label for="social-security">Social Security</label>
+				<input class="input-field" placeholder="Last 4 digits" id="social-security" type="text" data-pos="respondent.description.socialSecurity" value="{{respondent.description.socialSecurity}}">
+			</div>
+
+			<div class="row">
+				<div class="input-field col s12">
+					<label for="dist">Distinguishing Features</label>
+					<textarea id="dist" placeholder="" type="text" data-pos="respondent.description.distinguishingFeatures" value="{{respondent.description.distinguishingFeatures}}"></textarea>
+				</div>
+			</div>
+		{{/if}}
+		{{/with}}
 		{{> control}}
 		{{> page_count}}
 	</div>

@@ -82,7 +82,7 @@ Accounts.ui.config({
   Session.setDefault('counter', 0);
 
   Template.request_form.events({
-    'change input': function(e) {
+    'change input, change select': function(e) {
       var id = Session.get('doc')._id;
 
       var dest = $(e.target).data('pos');
@@ -133,6 +133,11 @@ Accounts.ui.config({
     'click #children': function () {
       Session.set('children', !Session.get('children')); //toggle
     },
+    'click #abuserSameAddress': function () {
+      Session.set('abuserSameAddress', !Session.get('abuserSameAddress')); //toggle
+      var doc = Session.get('doc');
+      ProtectionOrderRequests.update(doc._id, {$set: {'respondent': {'homeAddress': doc.petitioner.homeAddress} } } );
+    },
     'click .next': function () {
       nextPage();
     },
@@ -166,5 +171,9 @@ Accounts.ui.config({
 
   Template.registerHelper('session', function (name) {
       return Session.get(name);
+  });
+
+  Template.registerHelper('selectGender', function (name) {
+      return Session.get('doc').respondent.description.sex == name;
   });
 
