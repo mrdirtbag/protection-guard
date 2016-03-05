@@ -1,4 +1,4 @@
-var example = {
+example = {
   "petitioner": {
     "firstName": "thomas",
     "middleName": "seely",

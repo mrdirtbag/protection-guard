@@ -10,7 +10,16 @@ Router.configure({
 Router.route('/', function () {
   this.render("navbar", {to:"header"});
   if(Meteor.user()) {
-	this.render("request_form", {to:"main"});  
+	this.render("request_form", {to:"main"});
+
+	var doc = ProtectionOrderRequests.findOne({});
+
+	if(!doc) {
+		console.log("nodoc");
+		doc = example
+	} 
+	Session.set("doc", doc);
+
   } else {
   	this.render("please_login", {to:"main"});
   }
