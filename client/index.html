@@ -1,0 +1,44 @@
+<head>
+  <title>ProtectionOrder.Tech</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+</body>
+
+<!-- this is the main template used by iron:router to build the page -->
+<template name="ApplicationLayout">
+	{{> yield "header"}}
+	
+	<div class="container top-margin">
+	{{> yield "main"}}
+	</div>
+</template>
+
+<!-- top level template for the nav bar -->
+<template name="navbar">
+	<nav class="navbar navbar-default">
+		<div class="navbar-header">
+		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-navbar-collapse-1">
+		      <span class="sr-only">Toggle navigation</span>
+		      <span class="icon-bar"></span>
+		      <span class="icon-bar"></span>
+		      <span class="icon-bar"></span>
+		    </button>
+			<a class="navbar-brand" href="/">ProtectionOrder.Tech</a>
+		</div>
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+		    	<li><a href="/list">List</a></li>
+		    </ul>
+	        <div class="nav navbar-nav navbar-right">
+		    	{{> loginButtons align="right"}}
+		    </div>
+		</div>
+	</nav>
+</template>
+
+<template name="hello">
+	<h1>Hello</h1>
+</template>
