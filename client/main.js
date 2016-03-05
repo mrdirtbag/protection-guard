@@ -66,6 +66,9 @@ Accounts.ui.config({
     'click #hasOtherNames': function () {
       Session.set('hasOtherNames', !Session.get('hasOtherNames')); //toggle
     },
+    'click #children': function () {
+      Session.set('children', !Session.get('children')); //toggle
+    },
     'click .next': function () {
       // go to next page
       Session.set('page', Session.get('page') + 1);
@@ -91,7 +94,9 @@ Accounts.ui.config({
   });
 
   Template.request_form.rendered = function() {
-    Session.set('hasOtherNames', false)
+    var doc = Session.get("doc");
+    Session.set('hasOtherNames', false);
+    Session.set('children', doc.relationship.children.length > 0);
     Session.set('step', 1);
     Session.set('page', 1);
     Session.set('pageCount', pagesPerStep[Session.get('step')]);

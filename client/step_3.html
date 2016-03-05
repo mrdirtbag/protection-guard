@@ -1,7 +1,55 @@
 <template name="step_3">
 	<div id="step3" class="col s12">
-		aoeuaoeu      aoeuaoe uaoeu      aoeu
-		<a class="waves-effect waves-light btn next">Next</a>
-		{{> page_count}}
+	{{#if isPage 1}}
+		<h5 id="description">What is your relationship to the Respondent? <span id="apply">(Check all that apply)</span></h5>
+		<div id="selections">
+			<div class="col s6">
+				<p>
+			    <input type="checkbox" id="married" />
+			    <label for="married">Currently Married</label>
+			  </p>
+			  <p>
+			  	<input type="checkbox" id="divorced" />
+			  	<label for="divorced">We used to be married</label>
+			  </p>
+			  <p>
+			  	<input type="checkbox" id="liveTogether" />
+			  	<label for="liveTogether">We live together as a couple</label>
+			  </p>
+			  <p>
+			  	<input type="checkbox" id="livedToegether" />
+			  	<label for="livedToegether">We previously lived together as a couple.</label>
+			  </p>
+			  <p>
+			  	<input type="checkbox" id="roommates" />
+			  	<label for="roommates">We live or used to live in the same home</label>
+			  </p>
+			</div>
+			<div class="col s6">
+				<p>
+					<input type="checkbox" id="relatives" />
+					<label for="relatives">Relatives, in-laws, or by adoption</label>
+				</p>
+				<p>
+					<input type="checkbox" id="expecting" />
+					<label for="expecting">We are expecting a child now.</label>
+				</p>
+				<p>
+					<input type="checkbox" id="children" />
+					<label for="children">We have a child(ren)</label>
+				</p>
+			</div>
+		</div>
+	{{/if}}
+	{{#if isPage 2}}
+		<h5>List children:</h5>
+		<div id="selections">
+			<div class="s12">
+				<input placeholder="mm/dd/yyyy"  type="date" class="datepicker" data-pos="petitioner.dateOfBirth" value="{{petitioner.dateOfBirth}}">
+			</div>
+		</div>
+	{{/if}}
+	{{> control}}
+	{{> page_count}}
 	</div>
 </template>
