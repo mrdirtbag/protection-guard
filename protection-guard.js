@@ -1,4 +1,12 @@
-pagesPerStep = [undefined, 2, 2, 2];
+pagesPerStep = {
+  1: 2,
+  2: 2,
+  3: 1,
+  4: 1,
+  5: 1,
+  6: 1,
+  7: 1
+};
 
 if (Meteor.isClient) {
   // counter starts at 0
