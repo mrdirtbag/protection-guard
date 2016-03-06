@@ -3,6 +3,9 @@
 		{{#with session 'doc'}}
 		{{#if isPage 1}}
 			<h3>Who do you want protection from?</h3>
+			<div>
+			*This person is referred to as the "respondent".
+			</div>
 			<div class="input-field col s4">
 				<input placeholder="First Name" type="text" data-pos="respondent.firstName" value="{{respondent.firstName}}">
 			</div>
