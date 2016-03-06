@@ -12,6 +12,65 @@
 				</div>
 			</div>
 		{{/if}}
+		{{#if isPage 2}}
+		<div id="selections" class="col s12">
+			<input type="checkbox" id="courtCases" checked="{{otherCourtCases.otherCourtCases}}" data-pos="otherCourtCases.otherCourtCases">
+			<label for="courtCases" id="question">Have You or the Respondent been involved in any other court cases involving either you or your children?</label>
+		</div>
+		{{/if}}
+		{{#if isPage 3}}
+		<h5>What other court cases have you, the Respondent, and/or your children been involved in: </h5>
+		<div id="content" class="col s12">
+			<div class="col s12">
+				<div class="input-field col s2">
+					<label for="caseType">Case Type: </label>
+				</div>
+				<div class="input-field col s2">
+					<input placeholder="Case Type" data-pos="otherCourtCases.cases.0.type" id="caseType" type="text" value="{{otherCourtCases.cases.[0].type}}">
+				</div>
+				<div class="input-field col s1">
+					<label for="County">County: </label>
+				</div>
+				<div class="input-field col s2">
+					<input placeholder="Case Type" data-pos="otherCourtCases.cases.0.type" id="County" type="text" value="{{otherCourtCases.cases.[0].county}}">
+				</div>
+				<div class="input-field col s1">
+					<label for="state">State: </label>
+				</div>
+				<div class="input-field col s2">
+					<select id="state" data-pos="otherCourtCases.cases.0.state" value="{{otherCourtCases.cases.[0].state}}">
+						<option value="UT" selected="true">Utah</option>
+					</select>
+					<script>$('select').material_select();</script>
+				</div>
+			</div>
+			<div class="col s12">
+				<div class="input-field col s2">
+					<label for="caseNumber">Case Number: </label>
+				</div>
+				<div class="input-field col s2">
+					<input placeholder="Court Case Number" data-pos="otherCourtCases.cases.0.caseNumber" id="caseNumber" type="text" value="{{otherCourtCases.cases.[0].caseNumber}}">
+				</div>
+			</div>
+			<div class="col s12">
+				<h5>Whose is involved in this case? <i>(select all that apply)</i></h5>
+				<div class="col s6 offset-s3">
+					<input type="checkbox" id="involvedPetitioner" checked="{{otherCourtCases.cases.[0].personsInvolved.petitioner}}" data-pos="otherCourtCases.cases.0.personsInvolved.petitioner">
+					<label for="involvedPetitioner">You</label>
+					<input type="checkbox" id="involvedRespondant" checked="{{otherCourtCases.cases.[0].personsInvolved.respondent}}" data-pos="otherCourtCases.cases.0.personsInvolved.respondent">
+					<label for="involvedRespondant">Respondant</label>
+				</div>
+			</div>
+			<div class="col s12">
+				<input type="checkbox" id="judgeOrder" checked="{{otherCourtCases.cases.[0].judgeOrdered}}" data-pos="otherCourtCases.cases.0.judgeOrdered"/>
+				<label for="judgeOrder" id="order">Has a Judge issue an Order?</label>
+			</div>
+			<div class="col s12">
+				<input type="checkbox" id="childCourt" checked="{{otherCourtCases.cases.[0].childCourt}}" data-pos="otherCourtCases.cases.0.childCourt"/>
+				<label for="childCourt" id="order">There are court cases involving child(ren)</label>
+			</div>
+		</div>
+		{{/if}}
 	{{/with}}
 		{{> control}}
 		{{> page_count}}
