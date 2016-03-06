@@ -71,6 +71,42 @@
 			</div>
 		</div>
 		{{/if}}
+		{{#if isPage 4}}
+		<h5>Please Enter the details to court cases involving child(ren):</h5>
+		<div id="content" class="col s12">
+			<div class="col s12">
+				<div class="input-field col s2">
+					<label for="caseType">Case Type: </label>
+				</div>
+				<div class="input-field col s2">
+					<input placeholder="Case Type" data-pos="otherCourtCases.childrenCases.0.type" id="caseType" type="text" value="{{otherCourtCases.childrenCases.[0].type}}">
+				</div>
+				<div class="input-field col s1">
+					<label for="County">County: </label>
+				</div>
+				<div class="input-field col s2">
+					<input placeholder="Case Type" data-pos="otherCourtCases.childrenCases.0.county" id="County" type="text" value="{{otherCourtCases.childrenCases.[0].county}}">
+				</div>
+				<div class="input-field col s1">
+					<label for="state">State: </label>
+				</div>
+				<div class="input-field col s2">
+					<select id="state" data-pos="otherCourtCases.childrenCases.0.state" value="{{otherCourtCases.childrenCases.[0].state}}">
+						<option value="UT" selected="true">Utah</option>
+					</select>
+					<script>$('select').material_select();</script>
+				</div>
+			</div>
+		</div>
+		<div class="col s12">
+			<div class="input-field col s4">
+				<label for="caseNumber">Court or DCFS case number: </label>
+			</div>
+			<div class="input-field col s2">
+				<input placeholder="Court Case Number" data-pos="otherCourtCases.childrenCases.0.caseNumber" id="caseNumber" type="text" value="{{otherCourtCases.childrenCases.[0].caseNumber}}">
+			</div>
+		</div>
+		{{/if}}
 	{{/with}}
 		{{> control}}
 		{{> page_count}}
