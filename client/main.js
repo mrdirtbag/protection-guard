@@ -22,7 +22,7 @@ Router.route('/begin', function () {
 
   if(!doc) {
     console.log("nodoc");
-    doc = example
+    doc = {};
     ProtectionOrderRequests.insert(doc);
     doc = ProtectionOrderRequests.findOne({});
   } 
@@ -118,6 +118,9 @@ Accounts.ui.config({
       var change = {};
       change[dest] = value;
       ProtectionOrderRequests.update(id, {$set: change} );
+    },
+    'keypress input': function() {
+      nextPage();
     },
     'click #downloadRequest': function() {
       Meteor.call('request', function(error, result) {
