@@ -16,10 +16,17 @@ h3 {
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
 	background-color: #528ed0;
 	z-index: 1;
+	position: inherit;
 }
 
-ul {
-	z-index: -1;
+.tabs {
+	position: initial;
+}
+
+@media (max-width: 767px) {
+	.navbar-nav .open .dropdown-menu {
+		position: inherit;
+	}
 }
 
 /*UNIVERSAL CHECKBOX STYLES*/

@@ -77,7 +77,7 @@ Accounts.ui.config({
     var doc = Session.get('doc');
     var step = Session.get('step');
     var page = Session.get('page');
-    if (!Session.get('children') && step == 3 && page == 2)
+    if (!doc.relationship.hasChildren && step == 3 && page == 2)
       return true;
     if (!doc.otherCourtCases.otherCourtCases && step == 6 && page == 3)
       return true;
