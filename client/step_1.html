@@ -2,7 +2,7 @@
 	<div id="step1" class="col s12">
 		{{#with session 'doc'}}
 		{{#if isPage 1}}
-			<h3>To start off, we just need some basic information about you.</h3>
+			<h3>We need some basic information about you.</h3>
 			<div class="input-field col s4">
 				<input placeholder="First Name" data-pos="petitioner.firstName" id="first_name" type="text" value="{{petitioner.firstName}}">
 			</div>
@@ -38,6 +38,22 @@
 		{{#if isPage 4}}
 			<h3>When were you born?</h3>
 			<input placeholder="mm/dd/yyyy"  type="date" class="datepicker" data-pos="petitioner.dateOfBirth" value="{{petitioner.dateOfBirth}}">
+			{{> control}}
+		{{/if}}
+		{{#if isPage 5}}
+			<h3>Do you have an attorney? (optional)</h3>
+			<div class="row">
+
+				<input type="checkbox" id="hasAttorney" checked="{{session 'hasAttorney'}}" />
+				<label for="hasAttorney">Yes</label>
+				
+			</div>
+			<div class="input-field col s4">
+				<input placeholder="Name" data-pos="petitioner.attorney.name" id="attorneyName" type="text" value="{{petitioner.attorney.name}}">
+			</div>
+			<div class="input-field col s4">
+				<input placeholder="Phone" data-pos="petitioner.attorney.phone"  id="attorneyPhone" type="text" value="{{petitioner.attorney.phone}}">
+			</div>
 			{{> control}}
 		{{/if}}
 		{{/with}}

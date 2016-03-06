@@ -5,6 +5,7 @@
 		<h3>Next, we need details about the most recent abuse:</h3>
 		<div class="row">
 			<div class="input-field col s4">
+				Date of the event
 				<input placeholder="Date of event" type="date" data-pos="recentAbuse.when" value="{{recentAbuse.when}}">
 			</div>
 			<div class="input-field col s12">
@@ -28,11 +29,12 @@
 		<div class="row">
 			<div class="input-field col s12">
 			    <p>
-			      <input type="checkbox" class="filled-in" data-pos="recentAbuse.recentAbuse.police.came" id="police_came" />
+			      <input type="checkbox" data-pos="recentAbuse.police.came" checked="{{recentAbuse.police.came}}" id="police_came" />
 			      <label for="police_came">Did the police come?</label>
 		    	</p>
 			</div>
 		</div>
+		{{#if session 'police_came' }}
 		<div class="row">
 			<div class="input-field col s6">
 				<input placeholder="Department" type="text" data-pos="recentAbuse.police.department" value="{{recentAbuse.police.department}}">
@@ -40,7 +42,7 @@
 
 			<div class="input-field col s6">
 				<p>				
-					<input type="checkbox" class="filled-in" id="arrested" data-pos="recentAbuse.police.anyoneArrested" value="{{recentAbuse.police.anyoneArrested}}"/><label for="arrested">Anyone arrested?</label>
+					<input type="checkbox" id="arrested" data-pos="recentAbuse.police.anyoneArrested" value="{{recentAbuse.police.anyoneArrested}}"/><label for="arrested">Anyone arrested?</label>
 				</p>
 			</div>
 		</div>
@@ -51,11 +53,12 @@
 
 			<div class="input-field col s6">
 				<p>
-					<input type="checkbox" class="filled-in" id="ticketed" data-pos="recentAbuse.police.anyoneTicketed" value="{{recentAbuse.police.anyoneTicketed}}"/><label for="ticketed">Anyone ticketed?</label>
+					<input type="checkbox" id="ticketed" data-pos="recentAbuse.police.anyoneTicketed" value="{{recentAbuse.police.anyoneTicketed}}"/><label for="ticketed">Anyone ticketed?</label>
 				</p>
 			</div>
 
 		</div>
+		{{/if}}
 		{{> control}}
 
 		{{/if}}
@@ -78,7 +81,7 @@
 			</div>
 			<div class="input-field col s6">
 				<label for="weaponThreat">Did anyone threaten with a weapon?
-				<input type="checkbox" class="filled-in" data-pos="recentAbuse.weaponThreat" value="{{recentAbuse.weaponThreat}}"/></label>
+				<input type="checkbox" data-pos="recentAbuse.weaponThreat" value="{{recentAbuse.weaponThreat}}"/></label>
 			</div>
 			<div class="input-field col s6">
 				<input placeholder="Weapon Description" type="text" data-pos="recentAbuse.weaponDescription" value="{{recentAbuse.weaponDescription}}"/>

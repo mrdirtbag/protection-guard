@@ -80,6 +80,9 @@ Accounts.ui.config({
     if (!Session.get('children') && step == 3 && page == 2)
       return true;
 
+    if (!Session.get('another_incident') && step == 5 && page > 1)
+      return true;
+
     return false;
   }
 
@@ -87,7 +90,7 @@ Accounts.ui.config({
   Session.setDefault('counter', 0);
 
   Template.request_form.events({
-    'change input': function(e) {
+    'change input, change select': function(e) {
       var id = Session.get('doc')._id;
 
       var dest = $(e.target).data('pos');
@@ -138,6 +141,17 @@ Accounts.ui.config({
     'click #children': function () {
       Session.set('children', !Session.get('children')); //toggle
     },
+    'click #police_came': function () {
+      Session.set('police_came', !Session.get('police_came')); //toggle
+    },
+    'click #another_incident': function () {
+      Session.set('another_incident', !Session.get('another_incident')); //toggle
+    },
+    'click #abuserSameAddress': function () {
+      Session.set('abuserSameAddress', !Session.get('abuserSameAddress')); //toggle
+      var doc = Session.get('doc');
+      ProtectionOrderRequests.update(doc._id, {$set: {'respondent': {'homeAddress': doc.petitioner.homeAddress} } } );
+    },
     'click .next': function () {
       nextPage();
     },
@@ -150,6 +164,7 @@ Accounts.ui.config({
     var doc = Session.get("doc");
     Session.set('hasOtherNames', false);
     Session.set('children', doc.relationship.children.length > 0);
+    Session.set('police_came', doc.recentAbuse.police.came);
     Session.set('step', 1);
     Session.set('page', 1);
     Session.set('pageCount', pagesPerStep[Session.get('step')]);
@@ -171,5 +186,9 @@ Accounts.ui.config({
 
   Template.registerHelper('session', function (name) {
       return Session.get(name);
+  });
+
+  Template.registerHelper('selectGender', function (name) {
+      return Session.get('doc').respondent.description.sex == name;
   });
 
