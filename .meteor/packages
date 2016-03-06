@@ -23,3 +23,5 @@ iron:router
 accounts-password
 materialize:materialize
 twbs:bootstrap
+jgdovin:html-pdf
+cmather:handlebars-server
