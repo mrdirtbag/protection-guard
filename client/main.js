@@ -117,6 +117,24 @@ Accounts.ui.config({
       change[dest] = value;
       ProtectionOrderRequests.update(id, {$set: change} );
     },
+    'click #downloadRequest': function() {
+      Meteor.call('request', function(error, result) {
+         if (error) {
+            alert(error);
+         } else {
+            Meteor.pdf.save(result, 'request');
+         }
+      });
+    },
+    'click #downloadOrder': function() {
+      Meteor.call('order', function(error, result) {
+         if (error) {
+            alert(error);
+         } else {
+            Meteor.pdf.save(result, 'order');
+         }
+      });
+    },
     'click .tabs a': function(e) {
       // update the page an step after the user manually clicks on a tab
       if (e.toElement) {
