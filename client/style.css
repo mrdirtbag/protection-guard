@@ -42,7 +42,6 @@ input[type='checkbox']:checked + label:before {
 	height: 150px;
 	line-height: 125px;
 }
-
 .navbar-default {
 	background-color: #528ed0;
 	color: black !important;
@@ -58,4 +57,20 @@ input[type='checkbox']:checked + label:before {
 
 .tabs .tab a:hover {
 	color: #30A2E3;
+}
+
+#question {
+	line-height: normal;
+	font-size: 1.4rem;
+	color: #000;
+}
+
+#step6 #content {
+	display: inline-block;
+}
+
+#order {
+	line-height: 50px;
+	color: #000;
+	font-size: 1.4rem;
 }
