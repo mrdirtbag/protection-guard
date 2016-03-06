@@ -1,6 +1,5 @@
 # protection-guard
-### App to assist people in completing an application for protective services. This app can also use the application object to create
-###  the actual Proetection order.
+### App to assist people in completing an application for protective services. This app can also use the application object to create the actual Proetection order.
 
 ## Goal:
 1. To streamline the application in a 'Turbo Tax' style format to make the application process quickier and more efficient. 
