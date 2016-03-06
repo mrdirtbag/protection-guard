@@ -81,6 +81,8 @@ Accounts.ui.config({
       return true;
     if (!doc.otherCourtCases.otherCourtCases && step == 6 && page == 3)
       return true;
+    if(!doc.otherCourtCases.cases[0].childCourt && step == 6 && page == 4)
+      return true;
 
     if (!Session.get('another_incident') && step == 5 && page > 1)
       return true;
